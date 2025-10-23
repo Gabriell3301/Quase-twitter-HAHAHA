@@ -1,0 +1,183 @@
+/* Importação de fonte */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.header {
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h2 {
+    margin: 0 0 0 15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.header-back {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.header-back:hover {
+    color: #333;
+}
+
+.header-back i {
+    margin-right: 5px;
+}
+
+.notifications-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 0 15px;
+}
+
+.notification {
+    display: flex;
+    background: white;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 15px;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.3s;
+    position: relative;
+}
+
+.notification:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+/* Estilo para notificações não lidas */
+.notification-unread {
+    background-color: #f0f7ff;
+    border-left: 4px solid #4285f4;
+}
+
+.notification-unread .notification-text {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.notification-badge {
+    width: 8px;
+    height: 8px;
+    background-color: #4285f4;
+    border-radius: 50%;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+}
+
+.notification-unread .notification-icon {
+    background-color: #e0edff;
+    color: #4285f4;
+}
+
+.notification-clickable {
+    cursor: pointer;
+}
+
+.notification-link {
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    color: #a0a0a0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-right: 15px;
+    flex-shrink: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.notification-content {
+    flex-grow: 1;
+}
+
+.notification-arrow {
+    display: flex;
+    align-items: center;
+    color: #a0a0a0;
+    font-size: 14px;
+    margin-left: 10px;
+}
+
+.notification-clickable:hover .notification-arrow {
+    color: #666;
+    transform: translateX(3px);
+    transition: transform 0.2s, color 0.2s;
+}
+
+.notification-text {
+    font-size: 15px;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+    transition: font-weight 0.3s, color 0.3s;
+}
+
+.notification-time {
+    font-size: 12px;
+    color: #888;
+}
+
+.no-notifications {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    color: #888;
+}
+
+.no-notifications i {
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.no-notifications p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 650px) {
+    .notifications-container {
+        margin: 15px;
+        padding: 0;
+    }
+    
+    .notification {
+        padding: 15px;
+    }
+}

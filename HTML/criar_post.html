@@ -1,0 +1,51 @@
+<script></script>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../Images\Logos\MiniLogo.jfif" type="png">
+    <link rel="stylesheet" href="../CSS/cirar_post.css">
+    <title>Criar Post</title>
+</head>
+<body>
+    <div class="create-post-container">
+        <div class="form-header">
+            Criar Novo Post
+        </div>
+        
+        <div class="form-body">
+            <!-- Formulário para criação de post -->
+            <form action="../PHP/criar_post.php" method="POST">
+                <div class="form-group">
+                    <label class="form-label" for="title">Título:</label>
+                    <input type="text" class="form-control" id="title" name="title" required maxlength="100" placeholder="Digite um título para seu post">
+                    <div class="character-counter"><span id="title-count">0</span>/100</div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="content">Conteúdo:</label>
+                    <textarea class="form-control" id="content" name="content" required placeholder="O que você está pensando?"></textarea>
+                    <div class="character-counter"><span id="content-count">0</span>/500</div>
+                </div>
+                
+                <div class="form-options">
+                    <div>Visibilidade: Público</div>
+                    <div>Formato: Texto</div>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="publish-btn">Publicar</button>
+                </div>
+            </form>
+            
+            <a href="javascript:history.back()" class="back-link">← Voltar</a>
+        </div>
+    </div>
+    
+    <div class="form-footer">
+        © 2025 Creative Post Form. All rights reserved
+    </div>
+
+</body>
+</html>
