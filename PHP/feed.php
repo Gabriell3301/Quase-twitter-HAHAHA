@@ -61,7 +61,8 @@ $resultado = $db->query($query);
     <div class="container">
     <div class="posts" id="posts"> 
     <?php
-while ($post = $resultado->fetchArray(SQLITE3_ASSOC)) { // Correto: usa fetchArray() para os posts
+while ($post = $resultado->fetchArray(SQLITE3_ASSOC)) { 
+    // Correto: usa fetchArray() para os posts
     $username = htmlspecialchars($post['nome_user']);
     $firstLetter = strtoupper(substr($username, 0, 1));
     $post_id = $post['id'];
@@ -84,7 +85,12 @@ while ($post = $resultado->fetchArray(SQLITE3_ASSOC)) { // Correto: usa fetchArr
     $user_like_result = $user_like_stmt->execute(); // Executa a consulta
     $user_liked = $user_like_result->fetchArray(SQLITE3_ASSOC); // Use fetchArray() no resultado
 
-    
+    $coments_sql = "SELECT COUNT(*) as total FROM coments WHERE id_post = :post_id";
+    $coments_stmt = $db->prepare($coments_sql);
+    $coments_stmt->bindValue(":post_id", $post_id, SQLITE3_INTEGER);
+    $coments_result = $coments_stmt->execute();
+    $coments_count = $coments_result->fetchArray(SQLITE3_ASSOC);
+    $coments_count_result = $coments_count['total'];
 ?>
     <div class='post' data-post-id="<?php echo $post['id']; ?>">
         <a href='big_post.php?id=<?php echo $post['id']; ?>'>
@@ -112,7 +118,11 @@ while ($post = $resultado->fetchArray(SQLITE3_ASSOC)) { // Correto: usa fetchArr
         <div class='post-content'><?php echo nl2br(htmlspecialchars($post['content'])); ?></div>
         <div class='post-meta'>
             <div class='post-actions'>
-                <a href='big_post.php?id=<?php echo $post['id']; ?>'><button class='post-action'><span class='icon'>💬</span> Comentar</button></a>
+            <a href='big_post.php?id=<?php echo $post['id']; ?>'>
+                <button class='post-action'>
+                    <span class='icon'>💬</span>
+                    <?php echo $coments_count_result > 0 ? $coments_count_result . " Comentários" : "Comentar"; ?>
+                </button></a>    
                 <button class="post-action like-button" data-post-id="<?php echo $post_id; ?>">
                         <span class="icon">❤️</span>
                         <span id="like-count-<?php echo $post_id; ?>">

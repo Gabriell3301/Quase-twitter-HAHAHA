@@ -43,8 +43,7 @@ $comentarios_result = $comentarios_query->execute();
 <body>
     <header class="header">
         <div class="header-container">
-            <button onclick="window.location.href = document.referrer;" class="header-back">← Voltar</button>
-            <div class="header-title">Post</div>
+            <a href="feed.php" class="header-back">← Voltar</a>
         </div>
     </header>
 

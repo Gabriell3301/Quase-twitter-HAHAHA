@@ -27,6 +27,7 @@ body {
     cursor: pointer;
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
 .header-back:hover {
