@@ -103,6 +103,7 @@ while ($post = $resultado->fetchArray(SQLITE3_ASSOC)) {
                     <img src="<?php echo htmlspecialchars($post['perfil_imagem']); ?>" alt="Foto de perfil">
                 <?php endif; ?>
             </div>            
+            
             <div class='post-user'>
                 <div class='post-username'><?php echo $username; ?></div>
                 <div class='post-time'><?php echo $post['data_post']; ?></div>
