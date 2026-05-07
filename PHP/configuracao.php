@@ -37,6 +37,7 @@ if (isset($_SESSION['id_user'])) {
 ?>
 
 <!DOCTYPE html>
+<html lang="pt" data-theme="dark">
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
@@ -62,6 +63,7 @@ if (isset($_SESSION['id_user'])) {
         <form action="save_img.php" method="POST" enctype="multipart/form-data" class="form-body">
             <div class="form-group profile-image-container">
                 <img id="preview_image" src="<?php echo $perfil_imagem ? $perfil_imagem : 'default-avatar.png'; ?>" alt="Foto de Perfil" class="profile-image">
+                <br>
                 <label for="imagem" class="image-upload-label">Escolher Imagem</label>
                 <input type="file" name="imagem" id="imagem" class="image-upload" accept="image/*" required onchange="previewImage(event)">
             </div>

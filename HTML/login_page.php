@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+$erro = $_SESSION['erro'] ?? '';
+$user = $_SESSION['old_user'] ?? '';
+
+unset($_SESSION['erro']);
+unset($_SESSION['old_user']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,13 +25,27 @@
         <div class="form-body">
             <form action="../PHP/login.php" method="POST">
                 <div class="form-group">
-                    <input type="text" class="form-control" id="email_or_user" name="email_or_user" placeholder="Email or User Name" required>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="email_or_user" 
+                        name="email_or_user" 
+                        placeholder="Email or User Name"
+                        value="<?php echo htmlspecialchars($user); ?>"
+                        required
+                    >
                 </div>
                 
                 <div class="form-group">
                     <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
                 </div>
                 
+                <?php if ($erro): ?>
+                    <div style="color:red; text-align:center; margin-bottom:6px; font-size:14px;">
+                        <?php echo htmlspecialchars($erro); ?>
+                    </div>
+                <?php endif; ?>
+
                 <div class="form-check">
                     <input type="checkbox" id="lembrar" name="lembrar">
                     <label for="lembrar">Lembrar-me</label>

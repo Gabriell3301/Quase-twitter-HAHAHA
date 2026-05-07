@@ -1,7 +1,32 @@
-/* Importação de fonte */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=DM+Sans:wght@300;400;500&display=swap');
 
-/* Reset básico e estilos gerais */
+/* ─── Tokens (mesmo sistema do resto) ───────────────── */
+:root {
+    --bg:          #f7f6f3;
+    --surface:     #ffffff;
+    --surface-2:   #f0ede8;
+    --border:      #e5e1da;
+    --text:        #1a1814;
+    --text-muted:  #7a756c;
+    --accent:      #c0392b;
+    --accent-soft: #f9eeec;
+    --radius:      14px;
+    --shadow:      0 2px 20px rgba(0,0,0,.07);
+    --transition:  .22s cubic-bezier(.4,0,.2,1);
+}
+
+[data-theme="dark"] {
+    --bg:          #111110;
+    --surface:     #1c1b19;
+    --surface-2:   #252420;
+    --border:      #2e2c28;
+    --text:        #f0ede8;
+    --text-muted:  #7a756c;
+    --accent:      #e05a4e;
+    --accent-soft: #2a1a19;
+}
+
+/* ─── Base ───────────────── */
 * {
     margin: 0;
     padding: 0;
@@ -9,231 +34,215 @@
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 20px;
+    padding: 30px 16px;
 }
 
-/* Container principal */
+/* ─── Container ───────────────── */
 .settings-container {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
     overflow: hidden;
 }
 
-/* Cabeçalho do formulário */
+/* ─── Header ───────────────── */
 .form-header {
-    background-color: #e0e0e0;
-    padding: 20px;
+    padding: 22px;
     text-align: center;
-    color: #333;
-    font-size: 24px;
-    font-weight: 500;
+    border-bottom: 1px solid var(--border);
 }
 
-/* Abas de navegação */
+.form-header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* ─── Tabs ───────────────── */
 .settings-nav {
     display: flex;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
 }
 
 .nav-tab {
     flex: 1;
-    padding: 12px 15px;
+    padding: 14px;
     text-align: center;
     font-size: 14px;
-    font-weight: 500;
-    color: #666;
+    color: var(--text-muted);
     cursor: pointer;
-    transition: all 0.3s;
-    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    border-bottom: 2px solid transparent;
 }
 
 .nav-tab.active {
-    color: #333;
-    border-bottom-color: #888;
-    background-color: rgba(200, 200, 200, 0.2);
+    color: var(--text);
+    border-bottom: 2px solid var(--accent);
 }
 
-.nav-tab:hover:not(.active) {
-    background-color: rgba(200, 200, 200, 0.1);
+.nav-tab:hover {
+    background: var(--surface-2);
 }
 
-/* Fundo com bolinhas */
+/* ─── Body ───────────────── */
 .form-body {
-    padding: 30px;
-    background-color: #f0f0f0;
-    position: relative;
-    z-index: 1;
+    padding: 26px;
 }
 
-/* Bolinhas decorativas */
-.form-body::before,
-.form-body::after {
-    content: '';
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: rgba(200, 200, 200, 0.2);
-    z-index: -1;
-}
-
-.form-body::before {
-    top: -20px;
-    right: -20px;
-}
-
-.form-body::after {
-    bottom: 30px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-}
-
-/* Seções de configurações */
+/* ─── Sections ───────────────── */
 .settings-section {
     display: none;
 }
 
 .settings-section.active {
     display: block;
+    animation: fadeIn .25s ease;
 }
 
-/* Campos do formulário */
+/* ─── Inputs ───────────────── */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .form-label {
     display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #444;
-    font-weight: 500;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: var(--text-muted);
 }
 
 .form-control {
     width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
     font-size: 14px;
-    color: #333;
+    color: var(--text);
+    transition: var(--transition);
 }
 
 .form-control:focus {
     outline: none;
-    border-color: #aaa;
+    border-color: var(--accent);
+    background: var(--surface);
 }
 
-/* Perfil e imagem */
+/* ─── Profile image ───────────────── */
 .profile-image-container {
-    margin-bottom: 20px;
     text-align: center;
+    margin-bottom: 24px;
 }
 
 .profile-image {
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid #fff;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #e0e0e0;
-    display: block;
-    margin: 0 auto 15px;
+    border: 2px solid var(--border);
+    background: var(--surface-2);
+    margin-bottom: 10px;
 }
 
+/* Upload */
 .image-upload-label {
     display: inline-block;
-    padding: 8px 15px;
-    border-radius: 4px;
-    background-color: #a0a0a0;
-    color: white;
+    padding: 8px 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 50px;
     font-size: 13px;
     cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.image-upload-label:hover {
-    background-color: #888888;
+    transition: var(--transition);
 }
 
 .image-upload {
     display: none;
 }
 
-/* Botão de salvar */
+.image-upload-label:hover {
+    border-color: var(--text-muted);
+}
+
+/* ─── Buttons ───────────────── */
 .save-btn {
     width: 100%;
     padding: 12px;
+    border-radius: 10px;
     border: none;
-    border-radius: 4px;
-    background-color: #a0a0a0;
-    color: white;
+    background: var(--accent);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s;
+    color: #252420;
+    transition: var(--transition);
 }
 
 .save-btn:hover {
-    background-color: #888888;
+    opacity: .9;
 }
 
-/* Mensagem de sucesso/erro */
-.message {
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    font-size: 13px;
-}
-
-.success {
-    background-color: rgba(39, 174, 96, 0.1);
-    color: #27ae60;
-    border: 1px solid rgba(39, 174, 96, 0.3);
-}
-
-.error {
-    background-color: rgba(231, 76, 60, 0.1);
-    color: #e74c3c;
-    border: 1px solid rgba(231, 76, 60, 0.3);
-}
-
-/* Footer do formulário */
-.form-footer {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 12px;
-    color: #999;
-}
 .back-btn {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #a0a0a0;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
     width: 100%;
-    transition: background-color 0.3s;
-    margin-top: 20px;
+    margin-top: 12px;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
 }
 
 .back-btn:hover {
-    background-color: #888888;
+    border-color: var(--text-muted);
+    color: var(--text);
+}
+
+/* ─── Messages ───────────────── */
+.message {
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 14px;
+}
+
+.success {
+    background: rgba(39,174,96,.08);
+    color: #27ae60;
+}
+
+.error {
+    background: rgba(231,76,60,.08);
+    color: #e74c3c;
+}
+
+/* ─── Footer ───────────────── */
+.form-footer {
+    text-align: center;
+    padding: 18px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+}
+
+/* ─── Animations ───────────────── */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
