@@ -1,0 +1,103 @@
+Planejamento de Página de Perfil (Teoria)
+
+1.  Estrutura geral A página de perfil pode ser dividida em três grandes
+    partes:
+
+Perfil (informações do usuário) ↓ Estatísticas ↓ Conteúdo (posts, likes,
+comentários)
+
+2.  Cabeçalho do perfil Mostra as informações básicas do usuário.
+
+Elementos: - Foto de perfil - Username - Nome - Bio - Data de entrada no
+site - Botão seguir / editar perfil
+
+Exemplo visual:
+
+[ FOTO ]
+
+Gabriell @gabriell
+
+Desenvolvedor | Criando coisas
+
+Posts: 24 Likes: 130 Comentários: 89
+
+3.  Estatísticas Informações sobre atividade da conta.
+
+-   Número de posts
+-   Número de likes recebidos
+-   Número de comentários
+-   Seguidores / seguindo (caso exista sistema de seguir)
+
+4.  Conteúdo do perfil A parte principal da página.
+
+Pode ser dividido em abas:
+
+[ POSTS ] [ COMENTÁRIOS ] [ LIKES ]
+
+5.  Aba “Posts” Mostra todos os posts feitos pelo usuário.
+
+Lógica da query:
+
+SELECT * FROM posts WHERE user_id = X ORDER BY created_at DESC
+
+Cada post pode mostrar: - conteúdo - likes - comentários - data
+
+6.  Aba “Likes” Mostra posts que o usuário curtiu.
+
+Isso depende de uma configuração de privacidade:
+
+Mostrar meus likes no perfil: ON / OFF
+
+Lógica da query:
+
+SELECT posts.* FROM likes JOIN posts ON likes.post_id = posts.id WHERE
+likes.user_id = X
+
+7.  Aba “Comentários” Existem duas abordagens.
+
+Opção 1 – Mostrar apenas o comentário: Mostra o comentário feito e um
+link para o post.
+
+Opção 2 – Mostrar o post onde ele comentou: Mostra o post e destaca o
+comentário do usuário.
+
+Exemplo:
+
+Post de João: “Hoje está um dia lindo”
+
+Comentário de Gabriell: “Realmente, está perfeito!”
+
+Ao clicar → ir para o post original.
+
+Recomendação: Mostrar o post e destacar o comentário do usuário.
+
+8.  Privacidade Configurações possíveis:
+
+-   Mostrar likes no perfil
+-   Mostrar comentários no perfil
+-   Perfil público / privado
+
+9.  Estrutura mental da página
+
+Perfil ├─ Informações do usuário ├─ Estatísticas └─ Conteúdo ├─ Posts ├─
+Comentários └─ Likes
+
+10. Arquitetura (dica importante)
+
+Evitar carregar tudo de uma vez.
+
+Usar tabs com parâmetros:
+
+/profile.php?user=gabriel&tab=posts
+/profile.php?user=gabriel&tab=comments
+/profile.php?user=gabriel&tab=likes
+
+Isso melhora performance.
+
+11. Ideias extras para melhorar o perfil
+
+-   Post fixado no topo
+-   Post mais curtido
+-   Data de entrada no site
+-   Badge de usuário ativo
+-   Contador de likes recebidos

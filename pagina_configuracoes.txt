@@ -1,0 +1,64 @@
+Página de Configurações — Estrutura Recomendada
+
+1.  Informações da conta
+
+-   Foto de perfil
+-   Nome
+(-   Username / @)
+-   Email
+-   Bio
+-   Link pessoal
+-   Data de nascimento (opcional)
+
+2.  Segurança
+
+-   Alterar senha
+-   Ver sessões ativas
+-   Logout de outros dispositivos
+-   Autenticação em dois fatores (2FA)
+
+3.  Notificações
+
+-   Notificação de likes
+-   Notificação de comentários
+-   Notificação de seguidores
+-   Email notifications
+
+4.  Aparência
+
+-   Tema claro / escuro
+-   Tamanho da fonte
+-   Idioma
+
+5.  Privacidade
+
+-   Conta privada / pública
+-   Quem pode comentar
+-   Quem pode mandar mensagem
+-   Bloquear usuários
+
+6.  Usuários bloqueados Lista de pessoas bloqueadas com opção de
+    desbloquear.
+
+7.  Dados da conta
+
+-   Baixar seus dados
+-   Histórico de login
+-   Histórico de atividade
+
+8.  Gerenciamento da conta
+
+-   Desativar conta
+-   Excluir conta
+
+Sugestão para um site simples (ex: feed com posts):
+
+Essencial: - Foto de perfil - Nome - Username - Bio - Email - Alterar
+senha
+
+Social: - Conta pública / privada - Permitir comentários
+
+Sistema: - Tema claro / escuro - Logout - Excluir conta
+
+Dica de organização: Separar a página em categorias: Conta Segurança
+Privacidade Notificações Aparência
